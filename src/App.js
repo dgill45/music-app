@@ -1,4 +1,5 @@
 import {useState} from "react"
+import Player from "./components/Player"
 
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     {
       title: "Countdown",
       artist: "Def Squad",
-      img_src: "https://images.unsplash.com/photo-1599365080553-e7a573c592ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528&q=80",
+      img_src: "https://images.unsplash.com/photo-1512090421650-1ba94830f7b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
       src: "https://open.spotify.com/embed/track/6RDurH3O3KkCG0YRUOFF3O?utm_source=generator"
       },
     {
@@ -30,10 +31,16 @@ function App() {
       },
 
   ])
+
+  const [currentSongIndex, setCurrentSongIndex] = useState(0)
+  const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex +1)
   return (
     
     <div className="App">
-      COMPONENTS HERE!
+      <Player 
+       song = {songs[currentSongIndex]}
+       nextSong = {songs[nextSongIndex]} 
+       />
     </div>
   );
 }
