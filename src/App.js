@@ -1,10 +1,10 @@
-import {useState} from "react"
+import React, {useState, useEffect} from "react"
 import Player from "./components/Player"
 
 
 function App() {
   
-  const [songs, setSongs] = useState([
+  const [songs] = useState([
     {
       title: "Countdown",
       artist: "Def Squad",
@@ -30,16 +30,29 @@ function App() {
       src: "https://open.spotify.com/embed/track/72WTgVY78M7WYz3jyTWPWF?utm_source=generator"
       },
 
-  ])
+  ]);
 
   const [currentSongIndex, setCurrentSongIndex] = useState(0)
   const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex +1)
+
+  useEffect(() =>{
+    setNextSongIndex(() => {
+      if (currentSongIndex + 1 > songs.length -1) {
+        return 0;
+      } else {
+        return currentSongIndex +1;
+      }
+    })
+  }, [currentSongIndex]);
+
   return (
     
     <div className="App">
       <Player 
-       song = {songs[currentSongIndex]}
-       nextSong = {songs[nextSongIndex]} 
+       songs = {songs}
+       currentSongIndex = {currentSongIndex}
+       setCurrentSongIndex = {setCurrentSongIndex}
+       nextSongIndex = {nextSongIndex}
        />
     </div>
   );

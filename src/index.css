@@ -84,7 +84,7 @@ body {
 
 .c-player--controls .play-btn {
     display: flex;
-    margin-bottom: 0 30px;
+    margin: 0 30px;
     padding: 20px;
     border-radius: 50%;
     box-shadow:  4px 4px 10px rgba(0,0,0,0.8),
